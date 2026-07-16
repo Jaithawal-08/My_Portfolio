@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
-body{
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px; /* Offset for fixed navbar */
+}
+
+body {
   background-color: #111;
+}
+
+@media (hover: hover) {
+  body, a, button, input, textarea, select, [role='button'], .hover-target {
+    cursor: none !important;
+  }
 }
