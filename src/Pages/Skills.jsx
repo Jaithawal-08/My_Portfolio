@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import {
   FaReact, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt, FaGithub,
-  FaPython, FaJava, FaSitemap, FaBrain, FaRobot,
+  FaPython, FaJava, FaSitemap, FaBrain, FaRobot, FaCamera,
 } from "react-icons/fa";
-import { SiTailwindcss, SiMongodb, SiCplusplus, SiJavascript, SiFastapi, SiFigma } from "react-icons/si";
+import { SiTailwindcss, SiPostgresql, SiOpencv, SiCplusplus, SiJavascript, SiFastapi, SiFigma } from "react-icons/si";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -38,7 +38,7 @@ const skillCategories = [
     skills: [
       { name: "FastAPI", icon: <SiFastapi className="text-emerald-400" /> },
       { name: "MySQL", icon: <FaDatabase className="text-blue-300" /> },
-      { name: "MongoDB", icon: <SiMongodb className="text-emerald-500" /> },
+      { name: "PostgreSQL", icon: <SiPostgresql className="text-sky-400" /> },
     ],
   },
   {
@@ -47,6 +47,8 @@ const skillCategories = [
     skills: [
       { name: "Machine Learning", icon: <FaBrain className="text-pink-400" /> },
       { name: "Generative AI", icon: <FaRobot className="text-sky-300" /> },
+      { name: "OpenCV", icon: <SiOpencv className="text-red-500" /> },
+      { name: "MediaPipe", icon: <FaCamera className="text-teal-400" /> },
     ],
   },
   {
@@ -93,7 +95,7 @@ const Skills = () => {
     { name: "C++", level: 75 },
     { name: "Python", level: 70 },
     { name: "Machine Learning", level: 60 },
-    { name: "MySQL / MongoDB", level: 65 },
+    { name: "MySQL / PostgreSQL", level: 65 },
     { name: "FastAPI", level: 58 },
   ];
 

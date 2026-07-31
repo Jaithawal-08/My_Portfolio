@@ -15,31 +15,34 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div className='text-white bg-[#111] min-h-screen relative overflow-x-hidden'>
+    <div className='text-white bg-black min-h-screen relative overflow-x-hidden'>
       {/* Global Cursor */}
       <Cursor />
 
-      {/* Global Background Video */}
-      <div className="fixed inset-0 -z-20">
+      {/* Global Background Video Layer with Dark Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <Video />
+        {/* Dark overlay — makes the video background a darker shade across all pages */}
+        <div className="absolute inset-0 bg-black/65 backdrop-blur-[1px]" />
       </div>
-      {/* Dark blur overlay — keeps all pages dark like the home page */}
-      <div className="fixed inset-0 -z-10 bg-black/70 backdrop-blur-[2px]" />
 
-      {/* Fixed Navbar */}
-      <Navbar />
+      {/* Main Content Layer above Video */}
+      <div className="relative z-10">
+        {/* Fixed Navbar */}
+        <Navbar />
 
-      {/* Page Transitions wrap the routes */}
-      <PageTransition key={location.pathname}>
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/achievement" element={<Achievement />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </PageTransition>
+        {/* Page Transitions wrap the routes */}
+        <PageTransition key={location.pathname}>
+          <Routes location={location}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/project" element={<Project />} />
+            <Route path="/achievement" element={<Achievement />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </PageTransition>
+      </div>
     </div>
   )
 }

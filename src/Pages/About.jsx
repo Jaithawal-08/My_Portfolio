@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import AboutImg from "../Components/About/AboutImg.jpeg";
 import { FaGraduationCap, FaCode, FaBrain, FaHeart, FaMapMarkerAlt, FaUserGraduate } from "react-icons/fa";
-import { SiReact, SiTailwindcss, SiFastapi, SiMongodb } from "react-icons/si";
+import { SiReact, SiTailwindcss, SiFastapi, SiPostgresql } from "react-icons/si";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -171,12 +171,12 @@ const About = () => {
               {
                 icon: <SiFastapi className="text-emerald-400 text-3xl" />,
                 title: "Backend & APIs",
-                body: "Familiar with FastAPI for building lightweight, scalable Python APIs connected to MongoDB and MySQL databases.",
+                body: "Familiar with FastAPI for building lightweight, scalable Python APIs connected to PostgreSQL and MySQL databases.",
               },
               {
-                icon: <SiMongodb className="text-emerald-500 text-3xl" />,
+                icon: <SiPostgresql className="text-sky-400 text-3xl" />,
                 title: "Data Engineering",
-                body: "Experience designing schemas and working with both relational (MySQL) and document-based (MongoDB) databases.",
+                body: "Experience designing schemas and working with relational databases (MySQL & PostgreSQL).",
               },
               {
                 icon: <FaMapMarkerAlt className="text-pink-400 text-3xl" />,

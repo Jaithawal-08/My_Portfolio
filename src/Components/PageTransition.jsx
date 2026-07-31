@@ -33,17 +33,17 @@ const PageTransition = ({ children }) => {
       ease: "power3.inOut",
       delay: 0.05,
     })
-    .to(overlay, {
-      scaleY: 0,
-      transformOrigin: "bottom center",
-      duration: 0.5,
-      ease: "power3.inOut",
-    }, "-=0.35")
-    .to(content, {
-      opacity: 1,
-      duration: 0.4,
-      ease: "power2.out",
-    }, "-=0.25");
+      .to(overlay, {
+        scaleY: 0,
+        transformOrigin: "bottom center",
+        duration: 0.5,
+        ease: "power3.inOut",
+      }, "-=0.35")
+      .to(content, {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      }, "-=0.25");
 
     return () => {
       gsap.killTweensOf([overlay, overlay2, content]);

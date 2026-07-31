@@ -58,9 +58,8 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl transition-all duration-300 overflow-hidden ${
-          isMenuOpen ? "max-h-[420px] py-6 border-b border-cyan-400/20" : "max-h-0"
-        }`}
+        className={`absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl transition-all duration-300 overflow-hidden ${isMenuOpen ? "max-h-[420px] py-6 border-b border-cyan-400/20" : "max-h-0"
+          }`}
       >
         <div className="flex flex-col items-center gap-6">
           {links.map(({ label, to }) => (
