@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import AboutImg from "../Components/About/AboutImg.jpeg";
 import { FaGraduationCap, FaCode, FaBrain, FaHeart, FaMapMarkerAlt, FaUserGraduate } from "react-icons/fa";
-import { SiReact, SiTailwindcss, SiFastapi, SiPostgresql } from "react-icons/si";
+import { SiReact, SiFastapi, SiPostgresql } from "react-icons/si";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 

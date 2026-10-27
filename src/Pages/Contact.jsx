@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin, FaInstagram, FaPaperPlane, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin, FaInstagram, FaPaperPlane } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -61,7 +61,7 @@ const Contact = () => {
         } else {
           throw new Error("Form submission error");
         }
-      } catch (err) {
+      } catch {
         // Mailto fallback if network request fails
         window.location.href = `mailto:thawaljai08@gmail.com?subject=${encodeURIComponent(formState.subject || "Portfolio Contact")}&body=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`)}`;
         setSubmitted(true);

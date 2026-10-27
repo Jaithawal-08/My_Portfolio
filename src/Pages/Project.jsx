@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { FaExternalLinkAlt, FaGithub, FaLaptopCode, FaRegFolderOpen, FaCode } from "react-icons/fa";
-import { SiTailwindcss, SiJavascript } from "react-icons/si";
+import { FaExternalLinkAlt, FaGithub, FaLaptopCode } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,52 +21,44 @@ const projects = [
     title: "Club Website",
     description:
       "An interactive college club website featuring smooth navigation, event announcements, club info cards, and a fully responsive layout. Built with React ecosystem tools for component-driven architecture and great UX.",
-    longDesc:
-      "Handles club membership info, image galleries, responsive layouts, and themed to the club's branding. This was a collaborative UI project demonstrating my ability to work with React component structure and modern CSS utilities.",
     tags: ["React", "Tailwind CSS", "HTML", "CSS", "JS", "JSX"],
     github: "https://github.com/Jaithawal-08",
     demo: "https://club-website-zoue.vercel.app/",
-    gradient: "from-cyan-500/20 to-blue-600/20",
-    glowColor: "rgba(34,211,238,0.3)",
+    cover: "/cover_club.png",
+    accentColor: "#22d3ee",
   },
   {
     number: "02",
     title: "Splitvilla",
     description:
-      "A personal money-splitting and expense-tracking web tool. Created as a milestone project after completing my core HTML, CSS, and JavaScript fundamentals — solving a real personal problem.",
-    longDesc:
-      "Users enter expenses and people involved; the app automatically calculates fair share splits. Designed with a clean minimal UI and local data handling entirely in vanilla JS — no frameworks involved.",
+      "A personal money-splitting and expense-tracking web tool. Users enter expenses and participants; the app calculates fair splits automatically. Built entirely in vanilla JS — no frameworks.",
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Jaithawal-08",
-    demo: "https://github.com/Jaithawal-08",
-    gradient: "from-pink-500/20 to-rose-600/20",
-    glowColor: "rgba(236,72,153,0.3)",
+    demo: "https://splitvilla.vercel.app/",
+    cover: "/cover_splitvilla.png",
+    accentColor: "#ec4899",
   },
   {
     number: "03",
     title: "Spotify Clone",
     description:
-      "A pixel-faithful Spotify web player UI clone built using HTML, CSS, and JavaScript. Features a sidebar navigation, playlist card hover states, album artwork display, and a music player control bar.",
-    longDesc:
-      "Focused on matching the visual density of Spotify's interface, practising flexbox/grid layouts and hover interactions in pure CSS. The player UI controls are wired with JS event listeners.",
+      "A pixel-faithful Spotify web player UI clone. Features sidebar navigation, playlist card hover states, album artwork, and a music player control bar — all in HTML, CSS & JS.",
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/Jaithawal-08",
-    demo: "https://github.com/Jaithawal-08",
-    gradient: "from-emerald-500/20 to-green-600/20",
-    glowColor: "rgba(52,211,153,0.3)",
+    demo: "https://spotify-clone-eight-omega-35.vercel.app",
+    cover: "/cover_spotify.png",
+    accentColor: "#34d399",
   },
   {
     number: "04",
     title: "Netflix Clone",
     description:
-      "A high-fidelity static replica of the Netflix landing page built with only HTML and CSS. Matches the original's visual design language, hero section, feature highlights, and FAQ accordion section.",
-    longDesc:
-      "Demonstrates strong CSS layout fundamentals — pure CSS accordion, media queries for full responsiveness, and attention to detail in matching Netflix's brand design system.",
+      "A high-fidelity static replica of the Netflix India landing page. Matches the original's visual design, hero section, feature highlights, and FAQ accordion in pure HTML & CSS.",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Jaithawal-08",
-    demo: "https://github.com/Jaithawal-08",
-    gradient: "from-red-500/20 to-rose-800/20",
-    glowColor: "rgba(239,68,68,0.3)",
+    demo: "https://netflix-india-kappa.vercel.app",
+    cover: "/cover_netflix.png",
+    accentColor: "#ef4444",
   },
 ];
 
@@ -80,17 +71,15 @@ const Project = () => {
         { opacity: 0, y: 50 },
         {
           opacity: 1, y: 0, duration: 0.9, ease: "power3.out",
-          scrollTrigger: { trigger: ".projects-header", start: "top 88%" }
+          scrollTrigger: { trigger: ".projects-header", start: "top 88%" },
         }
       );
-
-      // Each project card animates in one by one
-      gsap.utils.toArray(".project-card").forEach((card, i) => {
+      gsap.utils.toArray(".project-card").forEach((card) => {
         gsap.fromTo(card,
-          { opacity: 0, x: i % 2 === 0 ? -80 : 80 },
+          { opacity: 0, y: 80 },
           {
-            opacity: 1, x: 0, duration: 0.9, ease: "power3.out",
-            scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none none" },
+            opacity: 1, y: 0, duration: 0.85, ease: "power3.out",
+            scrollTrigger: { trigger: card, start: "top 88%", toggleActions: "play none none none" },
           }
         );
       });
@@ -102,7 +91,7 @@ const Project = () => {
     <div ref={pageRef} className="relative min-h-screen text-white px-6 sm:px-12 lg:px-24 pt-28 pb-24">
 
       {/* Header */}
-      <div className="projects-header max-w-4xl mx-auto mb-20 text-center">
+      <div className="projects-header max-w-5xl mx-auto mb-20 text-center">
         <span className="text-cyan-400 font-mono text-xs tracking-widest uppercase">My Work</span>
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mt-3">
           My <span className="bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">Projects</span>
@@ -112,74 +101,87 @@ const Project = () => {
         </p>
       </div>
 
-      {/* Projects — single column, stacked */}
-      <div className="max-w-4xl mx-auto space-y-12">
+      {/* Project Cards — stacked one by one, full width */}
+      <div className="max-w-6xl mx-auto flex flex-col gap-32">
         {projects.map((project) => (
-          <div
-            key={project.number}
-            className={`project-card group relative rounded-3xl border border-white/10 bg-gradient-to-br ${project.gradient} backdrop-blur-md p-8 sm:p-10 overflow-hidden transition-all duration-500 hover:border-cyan-400/40 hover:scale-[1.01]`}
-            style={{ boxShadow: `0 0 0 transparent` }}
-            onMouseEnter={(e) => e.currentTarget.style.boxShadow = `0 0 50px ${project.glowColor}`}
-            onMouseLeave={(e) => e.currentTarget.style.boxShadow = `0 0 0 transparent`}
-          >
-            {/* Project number watermark */}
-            <span className="absolute top-4 right-6 text-7xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/8 transition-all">
-              {project.number}
-            </span>
+            <div
+              key={project.number}
+              className="project-card group relative w-full h-[70vh] min-h-[420px] sm:min-h-[480px] rounded-3xl overflow-hidden border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-white/25 hover:shadow-[0_0_80px_var(--glow)] cursor-pointer"
+              style={{ "--glow": project.accentColor }}
+            >
+            {/* Full-card background screenshot */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+              style={{ backgroundImage: `url(${project.cover})` }}
+            />
 
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
-              <div>
-                {/* Number badge */}
-                <span className="inline-block text-xs font-mono text-cyan-400 bg-cyan-400/10 border border-cyan-400/25 rounded-full px-3 py-1 mb-3">
-                  Project {project.number}
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                  {project.title}
-                </h3>
+            {/* Dark overlay — lightens on hover to reveal the screenshot */}
+            <div className="absolute inset-0 bg-black/85 group-hover:bg-black/45 transition-all duration-500" />
+
+            {/* Bottom gradient for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+
+            {/* Live badge */}
+            <div className="absolute top-6 right-6 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 border border-white/20 text-xs text-green-400 font-mono backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+              Live
+            </div>
+
+            {/* Project number */}
+            <div className="absolute top-6 left-6">
+              <span
+                className="text-xs font-mono px-3 py-1 rounded-full border bg-black/50 backdrop-blur-sm"
+                style={{ color: project.accentColor, borderColor: `${project.accentColor}50` }}
+              >
+                Project {project.number}
+              </span>
+            </div>
+
+            {/* Card content — sits at bottom */}
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10">
+              {/* Title — glows on hover */}
+              <h3
+                className="text-3xl sm:text-5xl font-extrabold text-white mb-4 transition-all duration-300 group-hover:[text-shadow:0_0_18px_var(--glow),0_0_40px_var(--glow)]"
+              >
+                {project.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-5 max-w-2xl group-hover:text-white transition-colors duration-300 line-clamp-3">
+                {project.description}
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className={`text-xs font-mono font-semibold px-3 py-1 rounded-full border backdrop-blur-sm ${tagColor[tag] ?? "text-gray-300 bg-white/5 border-white/20"}`}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-              <FaRegFolderOpen className="text-cyan-400 text-3xl flex-shrink-0 group-hover:rotate-6 transition-transform mt-1" />
-            </div>
 
-            {/* Main description */}
-            <p className="text-gray-200 text-sm sm:text-base leading-relaxed mb-4">
-              {project.description}
-            </p>
-
-            {/* Long description (lighter) */}
-            <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6">
-              {project.longDesc}
-            </p>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className={`text-xs font-mono font-semibold px-3 py-1 rounded-full border ${tagColor[tag] ?? "text-gray-300 bg-white/5 border-white/20"}`}
+              {/* CTA Buttons */}
+              <div className="flex gap-3">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-cyan-400/60 text-cyan-400 font-semibold text-sm backdrop-blur-sm bg-black/30 transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:border-cyan-400"
                 >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {/* CTA buttons */}
-            <div className="flex flex-wrap gap-4">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 border-2 border-cyan-400/60 rounded-full text-cyan-400 font-semibold text-sm transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]"
-              >
-                <FaGithub /> GitHub
-              </a>
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 border-2 border-pink-500/60 rounded-full text-pink-400 font-semibold text-sm transition-all duration-300 hover:bg-pink-500 hover:text-white hover:shadow-[0_0_20px_rgba(236,72,153,0.5)]"
-              >
-                <FaLaptopCode /> Live Demo <FaExternalLinkAlt className="text-[10px]" />
-              </a>
+                  <FaGithub /> GitHub
+                </a>
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-pink-500/60 text-pink-400 font-semibold text-sm backdrop-blur-sm bg-black/30 transition-all duration-300 hover:bg-pink-500 hover:text-white hover:shadow-[0_0_20px_rgba(236,72,153,0.6)] hover:border-pink-500"
+                >
+                  <FaLaptopCode /> Live Demo <FaExternalLinkAlt className="text-[10px]" />
+                </a>
+              </div>
             </div>
           </div>
         ))}

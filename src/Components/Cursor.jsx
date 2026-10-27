@@ -11,6 +11,9 @@ const Cursor = () => {
 
     if (!dot || !ring) return;
 
+    // Skip entirely on touch devices
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
     // Set initial positions offscreen
     gsap.set(dot, { xPercent: -50, yPercent: -50, x: -100, y: -100 });
     gsap.set(ring, { xPercent: -50, yPercent: -50, x: -100, y: -100 });

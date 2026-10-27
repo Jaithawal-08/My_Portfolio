@@ -7,7 +7,7 @@ import HomeScrollSection from "../Components/Home/HomeScrollSection";
 const Home = () => {
   return (
     <div className="relative min-h-screen flex flex-col justify-between pt-24">
-      <div className="flex flex-1 flex-col lg:flex-row items-center justify-between px-8 md:px-16 lg:px-24 py-8">
+      <div className="flex flex-1 flex-col lg:flex-row items-center justify-between px-4 sm:px-8 md:px-16 lg:px-24 py-8">
         <div className="w-full lg:w-1/2">
           <HomeHeroText />
         </div>
@@ -15,7 +15,7 @@ const Home = () => {
           <Image />
         </div>
       </div>
-      <div className="px-8 md:px-16 lg:px-24 pb-10">
+      <div className="px-4 sm:px-8 md:px-16 lg:px-24 pb-10">
         <HomeBottomText />
       </div>
       <HomeScrollSection />

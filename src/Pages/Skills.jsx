@@ -12,7 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 const skillCategories = [
   {
     title: "Core Languages & DSA",
-    color: "cyan",
     skills: [
       { name: "DSA", icon: <FaSitemap className="text-amber-400" /> },
       { name: "C++", icon: <SiCplusplus className="text-blue-500" /> },
@@ -25,7 +24,6 @@ const skillCategories = [
   },
   {
     title: "Frontend & Design",
-    color: "sky",
     skills: [
       { name: "React", icon: <FaReact className="text-cyan-400" /> },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="text-sky-400" /> },
@@ -34,7 +32,6 @@ const skillCategories = [
   },
   {
     title: "Backend & Databases",
-    color: "emerald",
     skills: [
       { name: "FastAPI", icon: <SiFastapi className="text-emerald-400" /> },
       { name: "MySQL", icon: <FaDatabase className="text-blue-300" /> },
@@ -43,7 +40,6 @@ const skillCategories = [
   },
   {
     title: "AI & Machine Learning",
-    color: "pink",
     skills: [
       { name: "Machine Learning", icon: <FaBrain className="text-pink-400" /> },
       { name: "Generative AI", icon: <FaRobot className="text-sky-300" /> },
@@ -52,7 +48,6 @@ const skillCategories = [
   },
   {
     title: "Core Subjects",
-    color: "violet",
     skills: [
       { name: "DBMS", icon: <FaDatabase className="text-blue-400" /> },
       { name: "Operating Systems", icon: <FaServer className="text-green-400" /> },
@@ -62,7 +57,6 @@ const skillCategories = [
   },
   {
     title: "Tools & Collaboration",
-    color: "orange",
     skills: [
       { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
       { name: "GitHub", icon: <FaGithub className="text-white" /> },
@@ -86,27 +80,9 @@ const Skills = () => {
           scrollTrigger: { trigger: ".skills-grid", start: "top 85%", toggleActions: "play none none none" },
         }
       );
-      gsap.fromTo(".skill-proficiency-row",
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.12,
-          scrollTrigger: { trigger: ".proficiency-section", start: "top 85%", toggleActions: "play none none none" },
-        }
-      );
     }, pageRef);
     return () => ctx.revert();
   }, []);
-
-  const proficiencies = [
-    { name: "HTML & CSS", level: 90 },
-    { name: "JavaScript", level: 78 },
-    { name: "React", level: 72 },
-    { name: "C++", level: 75 },
-    { name: "Python", level: 70 },
-    { name: "Machine Learning", level: 60 },
-    { name: "MySQL / PostgreSQL", level: 65 },
-    { name: "FastAPI", level: 58 },
-  ];
 
   return (
     <div ref={pageRef} className="relative min-h-screen text-white px-6 sm:px-12 lg:px-24 pt-28 pb-24">
