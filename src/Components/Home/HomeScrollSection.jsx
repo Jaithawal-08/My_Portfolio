@@ -7,6 +7,7 @@ import {
 import { SiLeetcode } from "react-icons/si";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LeetCodeHeatmap from "./LeetCodeHeatmap.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,6 +85,15 @@ const HomeScrollSection = () => {
           scrollTrigger: { trigger: ".hss-github-card", start: "top 88%", toggleActions: "play none none none" },
         }
       );
+      gsap.utils.toArray(".hss-analytics-card").forEach((card) => {
+        gsap.fromTo(card,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
+            scrollTrigger: { trigger: card, start: "top 88%", toggleActions: "play none none none" },
+          }
+        );
+      });
       gsap.fromTo(".hss-tagline",
         { opacity: 0, y: 30 },
         {
@@ -169,6 +179,39 @@ const HomeScrollSection = () => {
               alt="GitHub Streak"
               className="rounded-xl max-w-full h-auto"
               style={{ maxHeight: 170 }}
+            />
+          </div>
+        </div>
+
+        {/* LeetCode Dashboard */}
+        <div className="hss-analytics-card rounded-3xl border border-amber-400/15 bg-white/5 backdrop-blur-md p-6 sm:p-8">
+          <p className="text-amber-400 font-mono text-xs tracking-widest uppercase mb-6 text-center">LeetCode Dashboard</p>
+          <div className="flex justify-center mb-4">
+            <a
+              href="https://leetcode.com/u/Jai_thawal/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block transition-all duration-500 hover:scale-[1.02]"
+            >
+              <img
+                src="https://github-readme-leetcode-card.romitsagu.com/Jai_thawal?theme=dark"
+                alt="LeetCode solved-problem statistics"
+                className="rounded-xl max-w-full h-auto w-full max-w-[500px]"
+              />
+            </a>
+          </div>
+          <LeetCodeHeatmap />
+        </div>
+
+        {/* Language Analysis */}
+        <div className="hss-analytics-card rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-6 sm:p-8">
+          <p className="text-pink-400 font-mono text-xs tracking-widest uppercase mb-6 text-center">Language Analysis</p>
+          <div className="flex justify-center">
+            <img
+              src="https://github-readme-stats.vercel.app/api/top-langs/?username=Jaithawal-08&layout=compact&theme=tokyonight&hide_border=true"
+              alt="Most used languages on GitHub"
+              className="rounded-xl max-w-full h-auto"
+              style={{ maxHeight: 200 }}
             />
           </div>
         </div>
