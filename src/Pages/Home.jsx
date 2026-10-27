@@ -2,6 +2,7 @@ import React from "react";
 import HomeHeroText from "../Components/Home/HomeHeroText";
 import Image from "../Components/Home/Image";
 import HomeBottomText from "../Components/Home/HomeBottomText";
+import HomeScrollSection from "../Components/Home/HomeScrollSection";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <div className="px-8 md:px-16 lg:px-24 pb-10">
         <HomeBottomText />
       </div>
+      <HomeScrollSection />
     </div>
   );
 };

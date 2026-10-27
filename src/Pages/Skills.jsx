@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import {
   FaReact, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt, FaGithub,
-  FaPython, FaJava, FaSitemap, FaBrain, FaRobot, FaCamera,
+  FaPython, FaJava, FaSitemap, FaBrain, FaRobot, FaServer, FaMicrochip, FaProjectDiagram,
 } from "react-icons/fa";
-import { SiTailwindcss, SiPostgresql, SiOpencv, SiCplusplus, SiJavascript, SiFastapi, SiFigma } from "react-icons/si";
+import { SiTailwindcss, SiPostgresql, SiCplusplus, SiJavascript, SiFastapi, SiFigma, SiScikitlearn } from "react-icons/si";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -47,8 +47,17 @@ const skillCategories = [
     skills: [
       { name: "Machine Learning", icon: <FaBrain className="text-pink-400" /> },
       { name: "Generative AI", icon: <FaRobot className="text-sky-300" /> },
-      { name: "OpenCV", icon: <SiOpencv className="text-red-500" /> },
-      { name: "MediaPipe", icon: <FaCamera className="text-teal-400" /> },
+      { name: "Scikit-learn", icon: <SiScikitlearn className="text-orange-400" /> },
+    ],
+  },
+  {
+    title: "Core Subjects",
+    color: "violet",
+    skills: [
+      { name: "DBMS", icon: <FaDatabase className="text-blue-400" /> },
+      { name: "Operating Systems", icon: <FaServer className="text-green-400" /> },
+      { name: "COA", icon: <FaMicrochip className="text-yellow-400" /> },
+      { name: "System Design", icon: <FaProjectDiagram className="text-purple-400" /> },
     ],
   },
   {
